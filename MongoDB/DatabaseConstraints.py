@@ -8,7 +8,10 @@ def recreate_dbs():
     # for testing and demonstration, this wipes everything
     client = MongoClient(CONN_STR)
 
+    # create a database
+    # NOTE: does not get added until you create a collection
     db = client["MongoDS"]
+    print(f"Collections in DB: {', '.join(client.list_database_names()[:3])}...")
 
     # checking if the collection exists
     if 'Members' in db.list_collection_names():
@@ -53,6 +56,7 @@ def recreate_dbs():
         # 'warn' means that a warning is logged by action performed
         validationAction='error'
     )
+
     members_col = db['Members']
     members_col.create_index(
         keys=[
@@ -97,6 +101,20 @@ def recreate_dbs():
     )
     print('"Professors" created.')
 
+    print(f"Collections in DB: {', '.join(client.list_database_names()[:3])}...")
+
+
+def drop():
+    client = MongoClient(CONN_STR)
+    db = client["MongoDS"]
+
+    if 'Members' in db.list_collection_names():
+        db['Members'].drop()
+
+    if 'Professors' in db.list_collection_names():
+        db['Professors'].drop()
+
 
 if __name__ == '__main__':
     recreate_dbs()
+    # drop()

@@ -38,7 +38,7 @@ if __name__ == '__main__':
                 'majors': ['Computer Science'],
             },
             # you can specify whether to bypass validation...
-            bypass_document_validation=True
+            bypass_document_validation=False
         )
 
     collection = db['Professors']
@@ -71,7 +71,7 @@ if __name__ == '__main__':
             }
         )
     except Exception as err:
-        print(err)
+        print("P", err)
 
     # NOTES: Many developers defend the weird actions of MongoDB by claiming that
     # this is expected from a flexible, schemaless data model. Additionally,
