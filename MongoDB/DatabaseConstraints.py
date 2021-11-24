@@ -91,7 +91,7 @@ def recreate_dbs():
         keys=[
             ('email', ASCENDING)
         ],
-        name='prof_id',
+        name='professor_id',
         unique=True,
         min=1
     )

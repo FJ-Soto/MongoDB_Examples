@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from pymongo.collection import Collection
+from pymongo.errors import WriteError
 from pymongo.results import InsertManyResult
 
 from DatabaseConstraints import recreate_dbs
@@ -26,7 +27,7 @@ if __name__ == '__main__':
                 'majors': []
             },
         )
-    except Exception as err:
+    except WriteError as err:
         print(err)
     finally:
         collection.insert_one(
@@ -37,7 +38,7 @@ if __name__ == '__main__':
                 'majors': ['Computer Science'],
             },
             # you can specify whether to bypass validation...
-            bypass_document_validation=False
+            bypass_document_validation=True
         )
 
     collection = db['Professors']

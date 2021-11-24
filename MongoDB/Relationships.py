@@ -10,23 +10,27 @@ if __name__ == '__main__':
 
     db = client['MongoDS']
 
-    collection = db['Members']
-    res = collection.aggregate([
+    # collection = db['Professors']
+    res = db.Professors.aggregate([
         {
             '$lookup':
                 {
-                    'from': 'Professors',
-                    'localField': 'professor_id',
-                    'foreignField': 'email',
-                    'as': "professor"
+                    'from': 'Members',
+                    'localField': 'email',
+                    'foreignField': 'professor_id',
+                    'as': "advises"
                 }
         }
     ])
 
-    print('The result is similar to having one like:\n')
-    print('\tSELECT *\n'
-          '\tFROM\n'
-          '\t\tMembers M INNER JOIN Professors P\n'
-          '\t\tON M.professor_id = P.email\n')
+    print('The result is similar to having one like')
+    print('-'*100)
+    print('SELECT *\n'
+          'FROM\n'
+          '\tProfessors P LEFT OUTER JOIN Members M\n'
+          '\tON P.email = M.professor_id\n')
+    print('-'*100)
+
     for doc in res:
         pprint(doc)
+        print()
