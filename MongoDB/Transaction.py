@@ -1,9 +1,9 @@
 from Secrets import CONN_STR
 
-from pymongo import MongoClient, ReadPreference, WriteConcern
+from pymongo.database import Database
 from pymongo.client_session import ClientSession
 from pymongo.collection import Collection, ReturnDocument
-from pymongo.database import Database
+from pymongo import MongoClient, ReadPreference, WriteConcern
 
 
 def increase_accommodates(session: ClientSession, id):

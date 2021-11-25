@@ -1,7 +1,7 @@
-from pymongo import MongoClient
-from pymongo import ASCENDING
-
 from Secrets import CONN_STR
+
+from pymongo import ASCENDING
+from pymongo import MongoClient
 
 
 def recreate_dbs():

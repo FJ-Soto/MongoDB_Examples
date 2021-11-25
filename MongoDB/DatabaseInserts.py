@@ -1,10 +1,11 @@
+from Secrets import CONN_STR
+from DatabaseConstraints import recreate_dbs
+
 from pymongo import MongoClient
-from pymongo.collection import Collection
 from pymongo.errors import WriteError
+from pymongo.collection import Collection
 from pymongo.results import InsertManyResult
 
-from DatabaseConstraints import recreate_dbs
-from Secrets import CONN_STR
 
 if __name__ == '__main__':
     recreate_dbs()

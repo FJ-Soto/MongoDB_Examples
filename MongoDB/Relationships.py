@@ -1,9 +1,10 @@
 # now, now, this isn't about love...
 # JK this is about our LOVE for MongoDB!
-from pymongo import MongoClient
-from pprint import pprint
-
 from Secrets import CONN_STR
+
+from pprint import pprint
+from pymongo import MongoClient
+
 
 if __name__ == '__main__':
     client = MongoClient(CONN_STR)
