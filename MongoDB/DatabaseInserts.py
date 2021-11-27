@@ -8,9 +8,6 @@ from pymongo.results import InsertManyResult
 
 
 if __name__ == '__main__':
-    recreate_dbs()
-
-    DO_RESET = True
     client = MongoClient(CONN_STR)
 
     db = client['MongoDS']

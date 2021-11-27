@@ -1,5 +1,3 @@
-# now, now, this isn't about love...
-# JK this is about our LOVE for MongoDB!
 from Secrets import CONN_STR
 
 from pprint import pprint

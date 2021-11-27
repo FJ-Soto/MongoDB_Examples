@@ -11,7 +11,7 @@ def recreate_dbs():
     # create a database
     # NOTE: does not get added until you create a collection
     db = client["MongoDS"]
-    print(f"Collections in DB: {', '.join(client.list_database_names()[:3])}...")
+    print(f"Databases in DB: {', '.join(client.list_database_names()[:3])}...")
 
     # checking if the collection exists
     if 'Members' in db.list_collection_names():
@@ -101,7 +101,7 @@ def recreate_dbs():
     )
     print('"Professors" created.')
 
-    print(f"Collections in DB: {', '.join(client.list_database_names()[:3])}...")
+    print(f"Databases in DB: {', '.join(client.list_database_names()[:3])}...")
 
 
 def drop():

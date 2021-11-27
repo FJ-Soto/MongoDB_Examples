@@ -32,6 +32,7 @@ if __name__ == '__main__':
          'reviews': {'$slice': ["$reviews", 2]}}
     ).limit(3)
 
-    for doc in cursor:
+    for i, doc in enumerate(cursor, 1):
         print('-' * 100)
+        print(i, end=". ")
         pprint(doc)
