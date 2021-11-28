@@ -111,9 +111,6 @@ if __name__ == '__main__':
         doc = collection.find_one({'_id': doc_id}, {'bed_type': 1})
         print(f'\tPost-commit: \tbed_typed="{doc["bed_type"]}"')
 
-        print('NOTE: Unlike SQL, you cannot see the changes made until a transaction is committed.\n'
-              '\tThat is why it may be helpful to get the original document.')
-
     print()
     print('-' * 100)
     print('A multi-line transaction with rollback (abort).')
@@ -125,6 +122,10 @@ if __name__ == '__main__':
         session.start_transaction(write_concern=WriteConcern("majority"))
         doc = collection.find_one({'_id': doc_id}, {'bed_type': 1})
         print(f'\t Pre-trans: \tbed_typed="{doc["bed_type"]}"')
+
+        edit_bed_type(session, doc_id)
+        doc = collection.find_one({'_id': doc_id}, {'bed_type': 1})
+        print(f'\t    Changes: \tbed_type: "{doc["bed_type"]}"')
 
         session.abort_transaction()
         doc = collection.find_one({'_id': doc_id}, {'bed_type': 1})

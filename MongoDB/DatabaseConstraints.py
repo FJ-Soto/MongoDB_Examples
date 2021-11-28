@@ -104,17 +104,6 @@ def recreate_dbs():
     print(f"Databases in DB: {', '.join(client.list_database_names()[:3])}...")
 
 
-def drop():
-    client = MongoClient(CONN_STR)
-    db = client["MongoDS"]
-
-    if 'Members' in db.list_collection_names():
-        db['Members'].drop()
-
-    if 'Professors' in db.list_collection_names():
-        db['Professors'].drop()
-
-
 if __name__ == '__main__':
     recreate_dbs()
     # drop()

@@ -4,8 +4,7 @@ from DatabaseConstraints import recreate_dbs
 from pymongo import MongoClient
 from pymongo.errors import WriteError
 from pymongo.collection import Collection
-from pymongo.results import InsertManyResult
-
+from pymongo.results import InsertManyResult, InsertOneResult
 
 if __name__ == '__main__':
     client = MongoClient(CONN_STR)
@@ -28,7 +27,7 @@ if __name__ == '__main__':
     except WriteError as err:
         print(err)
     finally:
-        collection.insert_one(
+        res: InsertOneResult = collection.insert_one(
             {
                 'fname': 'Fernando',
                 'lname': 'Soto',
@@ -38,6 +37,7 @@ if __name__ == '__main__':
             # you can specify whether to bypass validation...
             bypass_document_validation=False
         )
+        print(f"Inserted object with ID: {res.inserted_id}")
 
     collection = db['Professors']
     try:
@@ -58,6 +58,8 @@ if __name__ == '__main__':
                 }
             ]
         )
+
+        print(f"Inserted objects with IDs: {res.inserted_ids}")
 
         mems: Collection = db['Members']
         mems.find_one_and_update(

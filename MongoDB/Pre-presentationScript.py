@@ -14,6 +14,7 @@ if 'Members' in db.list_collection_names():
     db['Members'].drop()
     print('Dropped Members')
 
+db = client['sample_airbnb']
 if 'review_view' in db.list_collection_names():
     db['review_view'].drop()
     print('Dropped review_view')
