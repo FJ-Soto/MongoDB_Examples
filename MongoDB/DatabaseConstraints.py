@@ -14,13 +14,13 @@ def recreate_dbs():
     print(f"Databases in DB: {', '.join(client.list_database_names()[:3])}...")
 
     # checking if the collection exists
-    if 'Members' in db.list_collection_names():
-        db['Members'].drop()
-        print('"Members" already exists. Dropped.')
+    if 'Students' in db.list_collection_names():
+        db['Students'].drop()
+        print('"Students" already exists. Dropped.')
 
         # creating collection with a jsonSchema
     db.create_collection(
-        "Members",
+        "Students",
         validator={
             "$jsonSchema": {
                 'bsonType': "object",
@@ -57,8 +57,8 @@ def recreate_dbs():
         validationAction='error'
     )
 
-    members_col = db['Members']
-    members_col.create_index(
+    Students_col = db['Students']
+    Students_col.create_index(
         keys=[
             ('email', ASCENDING)
         ],
@@ -66,7 +66,7 @@ def recreate_dbs():
         unique=True,
         min=1
     )
-    print('"Members" created.')
+    print('"Students" created.')
 
     if 'Professors' in db.list_collection_names():
         db['Professors'].drop()

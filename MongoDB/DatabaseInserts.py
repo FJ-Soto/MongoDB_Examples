@@ -14,7 +14,7 @@ if __name__ == '__main__':
     # sadly, validation errors are not helpful
     # the document below does not insert and yields 'Document failed validation...'
     # the reason for it is that size not in (1...4)
-    collection = db['Members']
+    collection = db['Students']
     try:
         collection.insert_one(
             {
@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
         print(f"Inserted objects with IDs: {res.inserted_ids}")
 
-        mems: Collection = db['Members']
+        mems: Collection = db['Students']
         mems.find_one_and_update(
             filter={'email': 'fsoto@my.dom.edu'},
             update={

@@ -10,9 +10,9 @@ if 'Professors' in db.list_collection_names():
     db['Professors'].drop()
     print('Dropped Professors')
 
-if 'Members' in db.list_collection_names():
-    db['Members'].drop()
-    print('Dropped Members')
+if 'Students' in db.list_collection_names():
+    db['Students'].drop()
+    print('Dropped Students')
 
 db = client['sample_airbnb']
 if 'review_view' in db.list_collection_names():

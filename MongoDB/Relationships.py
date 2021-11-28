@@ -14,10 +14,10 @@ if __name__ == '__main__':
         {
             '$lookup':
                 {
-                    'from': 'Members',
+                    'from': 'Students',
                     'localField': 'email',
                     'foreignField': 'professor_id',
-                    'as': "advises"
+                    'as': "advisees"
                 }
         }
     ])
@@ -26,7 +26,7 @@ if __name__ == '__main__':
     print('-'*100)
     print('SELECT *\n'
           'FROM\n'
-          '\tProfessors P LEFT OUTER JOIN Members M\n'
+          '\tProfessors P LEFT OUTER JOIN Students M\n'
           '\tON P.email = M.professor_id\n')
     print('-'*100)
 
